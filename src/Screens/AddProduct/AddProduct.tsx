@@ -4,6 +4,7 @@ import { Dropdown } from "react-native-element-dropdown"
 import { useState } from "react"
 import React, {FC} from "react"
 import { useRoute } from "@react-navigation/native"
+import styles from "./styles"
 
 
 
@@ -15,12 +16,12 @@ const AddProduct: FC<Props> =() => {
   const  test  =useRoute<any>().params;
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <Header />
       <View style={styles.formContainer}>
         <View style={styles.row}>
           <Text style={styles.text}>Product Name</Text>
-          <TextInput style={styles.input} />
+          <TextInput style={styles.input}/>
         </View>
         <View style={styles.row}>
           <Text style={styles.text}>Product Barcode:</Text>
@@ -48,42 +49,6 @@ const AddProduct: FC<Props> =() => {
   )
 }
 export default AddProduct;
-
-const styles = StyleSheet.create({
-  formContainer: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingVertical: 16,
-    paddingHorizontal: 10
-  },
-  text: {},
-  input: { borderWidth: 1, marginLeft: 10, width: 150 },
-  row: {
-    display: "flex",
-    flexDirection: "row",
-    marginBottom: 20,
-    justifyContent: "center",
-    alignItems:"center",
-  },
-  dropdown: {
-    width: 100,
-    marginLeft: 10,
-    borderBottomColor: "gray",
-    borderBottomWidth: 0.5,
-  },
-  placeholderStyle: { fontSize: 13 },
-  add:{
-    backgroundColor: "#5c8fe0",
-    width: 100,
-    padding: 10,
-    color: "white",
-    borderRadius: 10,
-    alignItems:"center",
-    marginBottom:10
-  }
-})
 
 const categories = [
   { label: "Category 1", value: "1" },

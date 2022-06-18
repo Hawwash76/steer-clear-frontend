@@ -8,18 +8,16 @@ import { NavigationProp, useNavigation } from "@react-navigation/native"
 import { MainRootStack } from "../../../../Navigators/Main"
 import React, { Dispatch, SetStateAction } from "react"
 
-
-
 interface Props {
   postContent: PostContent
   setShowComment: Dispatch<SetStateAction<boolean>>
 }
 
-const Post: FC<Props> = ({ postContent,setShowComment }) => {
+const Post: FC<Props> = ({ postContent, setShowComment }) => {
   const navigation = useNavigation<NavigationProp<MainRootStack>>()
 
-  const {handleLike } = useLike(postContent.id)
-  const [post,setPost] = useState<PostContent>(postContent)
+  const { handleLike } = useLike(postContent.id)
+  const [post, setPost] = useState<PostContent>(postContent)
   const [isLiked, setIsLiked] = useState<boolean>(postContent.isLiked)
   const [numberOfLikes, setNumberOfLikes] = useState<number>(
     postContent.likes.length
@@ -30,11 +28,11 @@ const Post: FC<Props> = ({ postContent,setShowComment }) => {
     <View style={styles.container}>
       <View style={styles.topSection}>
         <View style={styles.postUser}>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("UserProfile", {...DummyUser})
-          }}
-        >
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("UserProfile", { ...DummyUser })
+            }}
+          >
             <Image style={styles.topPic} source={PlaceholderImage} />
           </TouchableOpacity>
           <Text>{`${post.user.firstName} ${post.user.lastName}`}</Text>
@@ -70,7 +68,7 @@ const Post: FC<Props> = ({ postContent,setShowComment }) => {
               color={isLiked ? "red" : "grey"}
             />
           </TouchableOpacity>
-          <TouchableOpacity onPress={()=>setShowComment(true)}>
+          <TouchableOpacity onPress={() => setShowComment(true)}>
             <FontAwesome name="comment" size={24} color="grey" />
           </TouchableOpacity>
         </View>
@@ -81,12 +79,12 @@ const Post: FC<Props> = ({ postContent,setShowComment }) => {
 
 export default Post
 
-const DummyUser={
-  id:"5",
-  firstName:"Hamzeh",
-  lastName:"Hawwash",
-  phoneNumber:"0592711427",
-  email:"hamzehhawwash@yahoo.com",
-  password:"hawwash76",
-  bio:"i like blah blah blah"
+const DummyUser = {
+  id: "5",
+  firstName: "Hamzeh",
+  lastName: "Hawwash",
+  phoneNumber: "0592711427",
+  email: "hamzehhawwash@yahoo.com",
+  password: "hawwash76",
+  bio: "i like blah blah blah"
 }

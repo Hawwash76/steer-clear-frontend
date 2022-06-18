@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction } from "react"
-import { View, StyleSheet,Alert   } from "react-native"
+import { View, StyleSheet } from "react-native"
 import Found from "./ProductFound"
 import NotFound from "./ProductNotFound"
 
@@ -20,9 +20,6 @@ export default function ProductInfo({
   setIsScanned,
   productInfo
 }: Props) {
-
-  Alert.alert(productInfo.barcode)
-
   return (
     <View style={styles.container}>
       {isProductFound ? (
