@@ -1,14 +1,19 @@
 import { FC } from "react"
-import { SafeAreaView, FlatList,View } from "react-native"
+import {FlatList,View,TouchableOpacity } from "react-native"
 import styles from "./styles"
 import AddComment from "./../AddComment/AddComment"
 import Comment from "../Comment/Comment"
+import { AntDesign } from '@expo/vector-icons'; 
+import React, { Dispatch, SetStateAction } from "react"
 
-interface Props {}
 
-const Holder: FC<Props> = ({}) => {
+interface Props {
+  setShowComment: Dispatch<SetStateAction<boolean>>
+}
+const Holder: FC<Props> = ({setShowComment}) => {
   return (
     <View style={styles.container}>
+      <TouchableOpacity style={styles.back} onPress={()=>setShowComment(false)}><AntDesign name="back" size={30} color="black" /></TouchableOpacity>
       <FlatList
         data={DUMMYDATA}
         renderItem={({ item: comment }) => <Comment commentContent={comment} />}

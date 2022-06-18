@@ -20,7 +20,7 @@ const Profile =({}) => {
         />
         <Text
           style={styles.username}
-        >{`${user?.lastName} ${user?.lastName}`}</Text>
+        >{`${test.firstName} ${test.lastName}`}</Text>
         <Text style={styles.username}>{user?.bio}</Text>
       </View>
     </SafeAreaView>

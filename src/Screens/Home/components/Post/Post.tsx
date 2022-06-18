@@ -6,13 +6,16 @@ import PlaceholderImage from "./../../../../Assets/General/person-placeholder-im
 import styles from "./styles"
 import { NavigationProp, useNavigation } from "@react-navigation/native"
 import { MainRootStack } from "../../../../Navigators/Main"
+import React, { Dispatch, SetStateAction } from "react"
+
 
 
 interface Props {
   postContent: PostContent
+  setShowComment: Dispatch<SetStateAction<boolean>>
 }
 
-const Post: FC<Props> = ({ postContent }) => {
+const Post: FC<Props> = ({ postContent,setShowComment }) => {
   const navigation = useNavigation<NavigationProp<MainRootStack>>()
 
   const {handleLike } = useLike(postContent.id)
@@ -22,9 +25,6 @@ const Post: FC<Props> = ({ postContent }) => {
     postContent.likes.length
   )
   const isOneLike = numberOfLikes === 1
-  
-  // navigation.navigate<{test:typeof Dummyuser}>
-
 
   return (
     <View style={styles.container}>
@@ -32,8 +32,7 @@ const Post: FC<Props> = ({ postContent }) => {
         <View style={styles.postUser}>
         <TouchableOpacity
           onPress={() => {
-            // navigation.navigate("Profile")
-            navigation.navigate("Profile", {...DummyUser})
+            navigation.navigate("UserProfile", {...DummyUser})
           }}
         >
             <Image style={styles.topPic} source={PlaceholderImage} />
@@ -71,7 +70,7 @@ const Post: FC<Props> = ({ postContent }) => {
               color={isLiked ? "red" : "grey"}
             />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={()=>setShowComment(true)}>
             <FontAwesome name="comment" size={24} color="grey" />
           </TouchableOpacity>
         </View>

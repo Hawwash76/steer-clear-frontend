@@ -1,26 +1,32 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import AddProduct from "../Screens/AddProduct/AddProduct"
 import Search from "../Screens/Filter/Filter"
-import Profile from "../Screens/Profile/Profile"
+import UserProfile from "../Screens/UserPage/Profile"
 import CreatePost from "../Screens/CreatePost/CreatePost"
 import BottomTab from "./BottomTab"
 
 export type MainRootStack = {
   BottomTab: undefined
   CreatePost: undefined
-  AddProduct: undefined
+  AddProduct: DummyProduct
   Search: undefined
-  Profile: DummyUser
+  UserProfile: DummyUser
 }
 
-type DummyUser={
-  id:string,
-  firstName:string,
-  lastName:string,
-  phoneNumber:string,
-  email:string,
-  password:string,
-  bio:string
+type DummyUser = {
+  id: string
+  firstName: string
+  lastName: string
+  phoneNumber: string
+  email: string
+  password: string
+  bio: string
+}
+
+type DummyProduct = {
+  name: string
+  barcode: string
+  isIsraeli: boolean
 }
 
 const Stack = createNativeStackNavigator<MainRootStack>()
@@ -49,8 +55,8 @@ export default function Main() {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="Profile"
-        component={Profile}
+        name="UserProfile"
+        component={UserProfile}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

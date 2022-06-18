@@ -6,6 +6,7 @@ import Holder from "./components/Comments/Holder/Holder"
 import styles from "./styles"
 import { useState } from "react"
 
+
 function Home() {
   const { posts } = useFeed()
   const [showComment, setShowComment] = useState(false)
@@ -14,11 +15,11 @@ function Home() {
       <Header />
       <FlatList<PostContent>
         data={posts}
-        renderItem={({ item: post }) => <Post postContent={post}/>}
+        renderItem={({ item: post }) => <Post postContent={post} setShowComment={setShowComment}/>}
         keyExtractor={(post) => post.id}
         style={styles.flatList}
       />
-      {showComment && <Holder/>}
+      {showComment && <Holder setShowComment={setShowComment}/>}
     </View>
   ) : (
     <></>

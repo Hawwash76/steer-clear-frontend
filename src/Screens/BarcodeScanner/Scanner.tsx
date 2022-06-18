@@ -75,6 +75,11 @@ function Scanner() {
         })
       } else {
         setIsProductFound(false)
+        setScannedtProduct({
+          name:"",
+          barcode:scannedBarcode,
+          isIsraeli:false
+        })
       }
     })
     setIsItemScanned(true)

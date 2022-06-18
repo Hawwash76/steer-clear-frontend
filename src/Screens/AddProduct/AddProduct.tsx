@@ -1,18 +1,18 @@
-import { SafeAreaView, Text, View, StyleSheet, TextInput, Touchable, TouchableOpacity } from "react-native"
+import { SafeAreaView, Text, View, StyleSheet, TextInput, Touchable, TouchableOpacity,Alert } from "react-native"
 import Header from "../CreatePost/Components/Header/Header"
 import { Dropdown } from "react-native-element-dropdown"
 import { useState } from "react"
-import { ProductInfo } from "../../Components/Scanner/ProductInfo"
-import React, { Dispatch, FC, SetStateAction } from "react"
+import React, {FC} from "react"
+import { useRoute } from "@react-navigation/native"
 
 
 
 interface Props {
-  productInfo: ProductInfo
 }
 
-const AddProduct: FC<Props> =(productInfo) => {
+const AddProduct: FC<Props> =() => {
   const [value, setValue] = useState(null)
+  const  test  =useRoute<any>().params;
 
   return (
     <SafeAreaView>
@@ -23,8 +23,8 @@ const AddProduct: FC<Props> =(productInfo) => {
           <TextInput style={styles.input} />
         </View>
         <View style={styles.row}>
-          <Text style={styles.text}>Product Barcode:{productInfo}</Text>
-          <TextInput style={styles.input} />
+          <Text style={styles.text}>Product Barcode:</Text>
+          <Text >{test.barcode}</Text>
         </View>
         <View style={styles.row}>
           <Text style={styles.text}>Product Category</Text>

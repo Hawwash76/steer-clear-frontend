@@ -1,8 +1,9 @@
 import React, { Dispatch, SetStateAction } from "react"
-import { View, Text, TouchableOpacity, Button, StyleSheet } from "react-native"
+import { View, Text, TouchableOpacity, Button, StyleSheet ,Alert} from "react-native"
 import { NavigationProp, useNavigation } from "@react-navigation/native"
 import { MainRootStack } from "../../Navigators/Main"
 import { ProductInfo } from "./ProductInfo"
+
 
 interface Props {
   productInfo: ProductInfo
@@ -12,15 +13,13 @@ interface Props {
 
 export default function ProductNotFound(props: Props) {
   const navigation = useNavigation<NavigationProp<MainRootStack>>()
-
   return (
     <View style={styles.container}>
       <Text style={{ marginBottom: 30 }}>
         Opps, no such product was found, would you like to add this product?
       </Text>
       <TouchableOpacity
-        onPress={() => navigation.navigate("AddProduct")}
-        // onPress={() => navigation.navigate("AddProduct", value={props.productInfo})}
+        onPress={() => navigation.navigate("AddProduct", {...props.productInfo})}
         style={styles.add}
       >
         <Text style={{ color: "white" }}>Add</Text>

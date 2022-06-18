@@ -14,6 +14,13 @@ const styles = StyleSheet.create({
     },
     flatlist:{
     },
+    back:{
+        display:"flex",
+        alignItems:"flex-end",
+        marginRight:7,
+        marginBottom:10
+
+    }
 })
 
 export default styles

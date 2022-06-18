@@ -9,7 +9,8 @@ const styles = StyleSheet.create({
        marginBottom:5,
        borderTopWidth:1,
        borderColor:"grey",
-       paddingTop:10
+       paddingTop:10,
+       alignItems:"center"
     },
     pic:{
         width: 35,
@@ -24,6 +25,9 @@ const styles = StyleSheet.create({
         borderRadius:15,
         paddingLeft:10,
         backgroundColor:"white"
+    },
+    addIcon:{
+        marginLeft:15
     }
 })
 
